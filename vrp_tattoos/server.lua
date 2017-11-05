@@ -22,6 +22,9 @@ function vRPts.addTattoo(user_id, tattoo, store)
     TSclient.drawTattoo(player,{tattoo,store})
 	vRP.getUData({user_id,"vRP:tattoos",function(value)
 	  local tattoos = json.decode(value)
+	  if tattoos == nil then
+	    tattoos = {}
+	  end
 	  tattoos[tattoo] = store
 	  vRP.setUData({user_id,"vRP:tattoos",json.encode(tattoos)})
 	end})
